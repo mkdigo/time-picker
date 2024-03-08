@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+.clockContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: "Inter", sans-serif;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 10;
+}
+.clockContainer * {
+  box-sizing: border-box;
+}
+.clockContainer .clock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  width: 300px;
+  height: 300px;
+  border: 15px solid #000;
+  border-radius: 50%;
+  box-shadow: var(--shadow), inset 4px 4px 10px rgba(0, 0, 0, 0.5), inset -1px -1px 5px rgba(0, 0, 0, 0.5);
+}
+.clockContainer .clock .center {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border-radius: 50%;
+}
+.clockContainer .clock button {
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+.clockContainer .clock .hours {
+  --hour: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #999;
+  border-radius: 50%;
+}
+.clockContainer .clock .hours .hour {
+  position: absolute;
+  text-align: center;
+  position: absolute;
+  transform: rotate(calc(30deg * var(--hour)));
+  transform-origin: bottom center;
+  height: 50%;
+}
+.clockContainer .clock .hours .hour button {
+  padding: 0 !important;
+  min-height: unset;
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+  border-radius: 50%;
+  border: none;
+  transform: rotate(calc(-30deg * var(--hour)));
+}
+.clockContainer .clock .hours .hourPin {
+  --currentHour: 1;
+  position: absolute;
+  top: 38px;
+  width: 5px;
+  height: calc(50% - 18px);
+  background: #900;
+  transform-origin: 50% calc(100% - 38px + 18px);
+  transform: rotate(calc(30deg * var(--currentHour)));
+  transition: 1s;
+}
+.clockContainer .clock .hours .hourPin::before {
+  position: relative;
+  display: block;
+  content: "";
+  top: -5px;
+  left: -7.5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #900;
+}
+.clockContainer .clock .minutes {
+  --minute: 10;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  border-radius: 50%;
+}
+.clockContainer .clock .minutes .markers {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
+.clockContainer .clock .minutes .markers span {
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 50%;
+  border-top: 5px solid #000;
+  transform: rotate(calc(6deg * var(--minute)));
+  transform-origin: bottom center;
+}
+.clockContainer .clock .minutes .markers span:nth-child(5n+1) {
+  width: 3px;
+  border-top: 10px solid #000;
+}
+.clockContainer .clock .minutes .minute {
+  position: absolute;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  height: 50%;
+  transform: rotate(calc(30deg * var(--minute)));
+  transform-origin: bottom center;
+}
+.clockContainer .clock .minutes .minute button {
+  font-size: 20px;
+  padding: 0 !important;
+  min-height: unset;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  transform: rotate(calc(-30deg * var(--minute)));
+}
+.clockContainer .clock .minutes .minutePin {
+  --currentMinute: 0;
+  position: absolute;
+  top: 45px;
+  width: 3px;
+  height: calc(50% - 15px);
+  background: #000;
+  transform-origin: 50% calc(100% - 45px + 15px);
+  transform: rotate(calc(30deg * var(--currentMinute)));
+  transition: 1s;
+}
+.clockContainer .clock .minutes .minutePin::before {
+  position: relative;
+  display: block;
+  content: "";
+  top: -5px;
+  left: -8.5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #000;
+}
+.clockContainer .clock .hours button.selected::after,
+.clockContainer .clock .minutes button.selected::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  top: -3px;
+  left: -3px;
+  border-radius: 50%;
+  border: 2px dashed #369b6e;
+}
+.clockContainer .period {
+  display: flex;
+  gap: 1rem;
+}
+.clockContainer .period button {
+  padding: 0.5rem;
+  font-size: 16px;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  outline: none;
+  cursor: pointer;
+}
+.clockContainer .period button.selected {
+  background: #369b6e;
+}

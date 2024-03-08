@@ -1,0 +1,35 @@
+{
+  "name": "@mkdigo/time-picker",
+  "version": "1.0.0",
+  "description": "Time Picker React Component",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "copyfiles": "copyfiles -u 1 src/**/*.css dist/cjs && copyfiles -u 1 src/**/*.css dist/esm",
+    "build": "npm run styles && npm run build:esm && npm run build:cjs && npm run copyfiles",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "styles": "sass --no-source-map src"
+  },
+  "keywords": [
+    "timepicker",
+    "time",
+    "picker"
+  ],
+  "author": "Rodrigo Mukudai",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "copyfiles": "^2.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.71.1",
+    "typescript": "^5.4.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
