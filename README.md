@@ -4,7 +4,9 @@
 
 ## How to install
 
+```
 npm install @mkdigo/time-picker
+```
 
 ## How to use
 
